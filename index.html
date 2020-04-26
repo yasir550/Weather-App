@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css?family=Lato&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <title>Weather App</title>
+</head>
+<body>
+     
+    <!-- container -->
+    <div class="container">
+
+        <!-- left div -->
+
+        <div class="left">
+          <h1>Search Weather by City Name</h1>
+          <form action="">
+              <input type="text" id="cityname" placeholder="Enter City Name">
+              <button type="button" onclick="weather_by_city()">Get Weather</button>
+          </form>
+
+          <div class="output-left">
+            <img src="spinner.gif" alt="" id="left-gif">
+          </div>
+        </div>
+        <!-- left div -->
+
+         <!-- middle div -->
+        <div class="middle">
+
+                <h1>Search Weather by Latitude & Longitude</h1>
+                <form action="">
+                    <input type="text" id="lat" placeholder="Enter Latitude">
+                    <input type="text" id="long" placeholder="Enter Longitude">
+                    <button type="button" onclick="weather_by_lat_long()">Get Weather</button>
+                </form>
+      
+                <div class="output-middle">
+                    <img src="spinner.gif" alt="" id="middle-gif">
+                </div>
+
+        </div>
+        <!-- middle div -->
+
+        <!-- right div -->
+        <div class="right">
+
+                <h1>Search Weather by Zip Code</h1>
+                <form action="">
+                    <input type="text" id="zipcode" placeholder="Enter Zip Code">
+                    <button type="button" onclick="weather_by_zipCode()">Get Weather</button>
+                </form>
+      
+                <div class="output-right">
+                    <img src="spinner.gif" alt="" id="right-gif">
+                </div>
+
+        </div>
+        <!-- right div -->
+    </div>
+    <!-- container -->
+
+    <!-- jQuery src -->
+    <script src="jquery-3.4.1.min.js"></script>
+    
+    <!-- script starts from here -->
+    <script>
+        
+        // function to check current weather on by entring city name
+        function weather_by_city()
+        {
+            let cityName=$("#cityname").val();
+            $("#left-gif").show();
+             
+            //  Ajax method to retrieve weather data
+            $.ajax({
+                url:"https://api.openweathermap.org/data/2.5/weather",
+                method:"GET",
+                data:{
+                    q:cityName,
+                    appid:"223d9f92cd14810f5c47f0ee09fa6844",
+                    units:"metric"
+                },
+                // function to show recieved data in specified place in the document
+                success:function(response)
+                {
+                    $("#left-gif").hide();
+                    console.log(response);
+                    var fix = response["main"].temp;
+                    var removePoint = Math.trunc(fix)
+                    $(".output-left").text("");
+                    $(".output-left").append(`
+                     <h1>${cityName},<span>${response["sys"].country}</span></h1>
+                     <span class="temp">${removePoint} &deg C<img src="http://openweathermap.org/img/wn/${response["weather"]["0"].icon}@2x.png"/></span>
+                     <p>Weather: <span>${response["weather"][0].description}</span></p>
+                     <p>Wind-Speed: <span>${response["wind"].speed}</span></p>
+                     <p>Wind-Degree: <span>${response["wind"].deg}&deg</span></p>
+                     <p>Humidity: <span>${response["main"].humidity}%</span></p>`)
+                     
+                }
+            })
+        }
+
+
+         // function to check current weather on by entring lat, long
+        function weather_by_lat_long()
+        {
+            let latitude=$("#lat").val();
+            let longitude=$("#long").val();
+            $("#middle-gif").show();
+            
+            //  Ajax method to retrieve weather data
+            $.ajax({
+                url:"https://api.openweathermap.org/data/2.5/weather",
+                method:"GET",
+                data:{
+                    lat:latitude,
+                    lon:longitude,
+                    appid:"223d9f92cd14810f5c47f0ee09fa6844",
+                    units:"metric"
+                },
+                // function to show recieved data in specified place in the document
+                success:function(response)
+                {
+                    $("#middle-gif").hide();
+                    console.log(response);
+                    var fix = response["main"].temp;
+                     var removePoint = Math.trunc(fix)
+                    $(".output-middle").text(""); 
+                    $(".output-middle").append(`
+                     <h1>${response["name"]},<span>${response["sys"].country}</span></h1>
+                     <span class="temp">${removePoint}&deg C<img src="http://openweathermap.org/img/wn/${response["weather"]["0"].icon}@2x.png"/></span>
+                     <p>Weather: <span>${response["weather"][0].description}</span></p>
+                     <p>Wind-Speed: <span>${response["wind"].speed}</span></p>
+                     <p>Wind-Degree: <span>${response["wind"].deg}&deg</span></p>
+                     <p>Humidity: <span>${response["main"].humidity}%</span></p>`)
+                }
+            })
+        }
+
+         // function to check current weather on by entring ZIP Code
+        function weather_by_zipCode()
+        {
+            let zipCode=$("#zipcode").val();
+            $("#right-gif").show();
+            
+            //  Ajax method to retrieve weather data
+            $.ajax({
+                url:"https://api.openweathermap.org/data/2.5/weather",
+                method:"GET",
+                data:{
+                    zip:zipCode,
+                    appid:"223d9f92cd14810f5c47f0ee09fa6844",
+                    units:"metric"
+                },
+                // function to show recieved data in specified place in the document
+                success:function(response)
+                {
+                    $("#right-gif").hide();
+                    console.log(response);
+                    var fix = response["main"].temp;
+                     var removePoint = Math.trunc(fix)
+                    $(".output-right").text(""); 
+                    $(".output-right").append(`
+                     <h1>${response["name"]},<span>${response["sys"].country}</span></h1>
+                     <span class="temp">${removePoint}&degC<img src="http://openweathermap.org/img/wn/${response["weather"]["0"].icon}@2x.png"/></span>
+                     <p>Weather: <span>${response["weather"][0].description}</span></p>
+                     <p>Wind-Speed: <span>${response["wind"].speed}</span></p>
+                     <p>Wind-Degree: <span>${response["wind"].deg}&deg</span></p>
+                     <p>Humidity: <span>${response["main"].humidity}%</span></p>`)
+                }
+            })
+        }
+
+
+        
+    </script>
+</body>
+</html>

@@ -1,0 +1,279 @@
+*
+{
+    padding: 0;
+    margin: 0;
+    font-family: 'Lato', sans-serif;
+}
+.container
+{
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: space-between;
+}
+.left,.middle,.right
+{
+   width: 33.4%;
+   height: 100%;
+}
+.left
+{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-image: url("3503.jpg");
+    background-size: cover;
+    background-position: center;
+}
+.left>h1
+{
+    height: 100px;
+    text-align: center;
+    color: #FED88D;
+}
+.left>form
+{
+    width: 70%;
+    height: 100px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+.left>form>input
+{
+    width: 100%;
+    height: 30%;
+    border: 2px solid #FED88D;
+    border-radius: 5px;
+    outline: none;
+    background: none;
+    padding-left: 10px;
+    color: #FED88D;
+}
+.left>form>input::placeholder
+{
+    color: #FED88D;
+}
+.left>form>button
+{
+    width: 100%;
+    height: 35%;
+    border: none;
+    background: #FED88D;
+    border-radius: 5px;
+    outline: none;
+    color: #424874;
+    cursor: pointer;
+    font-size: 1em;
+}
+.output-left
+{
+    width: 72%;
+    height: 60%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    position: relative;
+}
+.output-left>#left-gif
+{
+    position: absolute;
+    top: 30%;
+    left: 20%;
+    display: none;   
+}
+.output-left>h1
+{
+    color: #FED88D;
+    text-transform: capitalize;
+}
+.output-left>.temp
+{
+    font-size: 3em;
+    color: #FED88D;
+    font-weight: 900;
+}
+.output-left>p
+{
+    font-size: 1.5em;
+    color: #424874;
+    width:100%;
+    display: flex;
+    justify-content: space-between;
+}
+.middle
+{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-image: url("10228.jpg");
+    background-size: cover;
+    background-position: center;
+}
+.middle>h1
+{
+    color: #FED88D;
+    height: 100px;
+    text-align: center;
+}
+.middle>form
+{
+    width: 100%;
+    height: 100px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-content: space-evenly;
+}
+.middle>form>input
+{
+    width: 45%;
+    height: 30%;
+    border: 2px solid #FED88D;
+    border-radius: 5px;
+    outline: none;
+    background: none;
+    padding-left: 10px;
+    color: white;
+}
+.middle>form>input::placeholder
+{
+    color: #FED88D;
+}
+.middle>form>button
+{
+    width: 70%;
+    height: 35%;
+    border: none;
+    background: #FED88D;
+    border-radius: 5px;
+    outline: none;
+    color: #424874;
+    cursor: pointer;
+    font-size: 1em;
+}
+.output-middle
+{
+    width: 72%;
+    height: 70%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    position: relative;
+
+}
+.output-middle>img
+{
+    position: absolute;
+    top: 30%;
+    left: 20%;
+    display: none;   
+}
+.output-middle>h1
+{
+    color: #424874;
+}
+.output-middle>.temp
+{
+    font-size: 3em;
+    color: #FED88D;
+    font-weight: 900;
+}
+.output-middle>p
+{
+    font-size: 1.5em;
+    color: #424874;
+    width:100%;
+    display: flex;
+    justify-content: space-between;
+}
+.right
+{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-image: url("11703.jpg");
+    background-size: cover;
+    background-position: center;
+}
+.right>h1
+{
+    color: #FED88D;
+    height: 100px;
+    text-align: center;
+}
+.right>form
+{
+    width: 70%;
+    height: 100px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+.right>form>input
+{
+    width: 100%;
+    height: 30%;
+    border: 2px solid #FED88D;
+    border-radius: 5px;
+    outline: none;
+    background: none;
+    padding-left: 10px;
+    color: #FED88D
+}
+.right>form>input::placeholder
+{
+    color: #FED88D;
+}
+.right>form>button
+{
+    width: 100%;
+    height: 35%;
+    border: none;
+    background: #FED88D;
+    border-radius: 5px;
+    outline: none;
+    color: #424874;
+    cursor: pointer;
+    font-size: 1em;
+}
+.output-right
+{
+    width: 72%;
+    height: 70%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    position: relative;
+}
+.output-right>img
+{
+    position: absolute;
+    top: 30%;
+    left: 20%;
+    display: none;   
+}
+.output-right>h1{
+    color: #424874;
+}
+.output-right>.temp
+{
+    font-size: 3em;
+    color: #FED88D;
+    font-weight: 900;
+}
+.output-right>p
+{
+    font-size: 1.5em;
+    color: #424874;
+    width:100%;
+    display: flex;
+    justify-content: space-between;
+}
+.temp
+{
+    color: #FED88D;
+}
